@@ -1,0 +1,40 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    align-content: space-between;
+    border: 1px solid;
+    margin: 1px;
+}
+
+.id_empleado, .nombre_empleado, .correo_empleado, .rol_empleado, .del {
+    margin: 10px;
+}
+
+.id_empleado {
+    height: auto;
+}
+
+.nombre_empleado {
+    width: 200px;
+}
+
+.correo_empleado {
+    width: 300px;
+    color: rgb(0, 125, 226);
+    text-decoration: underline;
+}
+
+.rol_empleado, .del {
+    width: 150px;
+}
+
+.add_register {
+    display: flex;
+    margin: 5px;
+    justify-content: right;
+}
