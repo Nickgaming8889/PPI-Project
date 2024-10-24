@@ -24,3 +24,15 @@ function enviarAjax() {
         })
     }
 }
+
+function entra() {
+    console.log('Entra al Campo');
+    alert('Entra al Campo');
+}
+
+function sale() {
+    var correo = $('correo').val();
+
+    var num = 1;
+
+}
