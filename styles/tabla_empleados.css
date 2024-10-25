@@ -7,7 +7,6 @@
     width: 100%;
     display: flex;
     align-content: space-between;
-    border: 1px solid;
     margin: 1px;
 }
 
@@ -20,7 +19,7 @@
 }
 
 .nombre_empleado {
-    width: 200px;
+    width: 150px;
 }
 
 .correo_empleado {
@@ -36,5 +35,5 @@
 .add_register {
     display: flex;
     margin: 5px;
-    justify-content: right;
+    justify-content: left;
 }

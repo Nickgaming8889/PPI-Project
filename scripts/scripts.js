@@ -1,3 +1,20 @@
+function registroValidacion() {
+    var nombre_ = $('#nombre').val();
+    var apellido_ = $('#apellido').val();
+    var email_ = $('#email').val();
+    var password_ = $('#password').val();
+    var rol_ = $('#rol').val();
+
+    if (nombre_ != "" && apellido_ != "" && email_ != "" && password_ != "" && rol_ != 0) {
+
+    }
+    else {
+        $('#mensaje').html("Faltan campos por llenar");
+        setTimeout("$('#mensaje').html('');",5000);
+    }
+
+}
+
 function enviarAjax() {
     var numero = $('#numero').val();
     if (numero == '' || numero <= 0) {
@@ -25,14 +42,29 @@ function enviarAjax() {
     }
 }
 
-function entra() {
+/*function entra() {
     console.log('Entra al Campo');
     alert('Entra al Campo');
-}
+}*/
 
-function sale() {
-    var correo = $('correo').val();
+/*function sale() {    
+    var email = $('#email').val();    
+    if(email !=''){
+        $.ajax({
+            url: 'validacion_correo.php',
+            type: 'post',
+            dataType: 'text',
+            data: 'email='+ email, 
+            success: function(resp) {
+                console.log(resp);
+                if (resp == 1) {
+                    $('#mensaje').html('El correo ya existe');
+                }
+                setTimeout("$('#mensaje').html('');", 5000);
+            },error: function(){
+                alert('Error en la conexion...');
+            }
+        });
+    }
+}*/
 
-    var num = 1;
-
-}

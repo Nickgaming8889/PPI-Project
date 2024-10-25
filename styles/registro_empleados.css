@@ -1,0 +1,17 @@
+.go_back {
+    margin: 2px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.input {
+    margin: 2px;
+} 
+
+.message {
+    color: #F00;
+    font-size: 16px;
+}

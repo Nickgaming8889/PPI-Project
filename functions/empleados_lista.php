@@ -37,14 +37,14 @@
                 <div class="nombre_empleado"><?php echo $employee->name; ?></div>
                 <div class="correo_empleado"><?php echo $employee->email; ?></div>
                 <div class="rol_empleado"><?php echo $employee->role; ?></div>
-                <div class="del"><a href="empleados_elimina.php?id=<?php echo   $employee->id?>">Eliminar</a></div>
+                <div class="del"><input type="submit" onclick="return eliminarEmpleados()"></div>
             </div>
             <?php } ?>  
         </div>
     </div>
     
     <div class="add_register">
-        <form action="empleados_alta.php" method="post">
+        <form action="registrar_empleado.html" method="post">
             <button type="submit">Add Register</button>
         </form>
     </div>

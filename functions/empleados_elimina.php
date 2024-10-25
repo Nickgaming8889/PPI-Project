@@ -1,10 +1,25 @@
 <?php
-    require_once "connectionDB/connection.php";
-    
-    $id = $_REQUEST['id'];
-    
-    $sql = "UPDATE empleados SET eliminar = 1 WHERE id = $id";                                                                  
-    $res = $conn->query($sql);
+require_once "connectionDB/connection.php";
 
-    header("Location: empleados_lista.php");
+header("Location: empleados_lista.php");
+$response = ["success" => false];
+
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+
+    $sql = "UPDATE empleados SET eliminar = 1 WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $result = $stmt->execute();
+
+    if ($result) {
+        $response["success"] = true;
+    } else {
+        $response["error"] = "Error al intentar eliminar el empleado.";
+    }
+} else {
+    $response["error"] = "ID de empleado no especificado.";
+}
+
+echo json_encode($response);
 ?>
