@@ -1,7 +1,6 @@
 <?php
 require_once "connectionDB/connection.php";
 
-header("Location: empleados_lista.php");
 $response = ["success" => false];
 
 if (isset($_GET['id'])) {
@@ -21,5 +20,5 @@ if (isset($_GET['id'])) {
     $response["error"] = "ID de empleado no especificado.";
 }
 
+header('Content-Type: application/json');
 echo json_encode($response);
-?>

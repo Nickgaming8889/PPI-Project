@@ -1,0 +1,60 @@
+/* detalle_empleado.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.detalle-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+}
+
+.detalle-tabla {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.detalle-tabla th, .detalle-tabla td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.detalle-tabla th {
+    background-color: #f7f7f7;
+    color: #555;
+}
+
+.acciones {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.boton-regresar {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.boton-regresar:hover {
+    background-color: #0056b3;
+}

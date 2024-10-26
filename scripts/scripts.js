@@ -1,20 +1,3 @@
-function registroValidacion() {
-    var nombre_ = $('#nombre').val();
-    var apellido_ = $('#apellido').val();
-    var email_ = $('#email').val();
-    var password_ = $('#password').val();
-    var rol_ = $('#rol').val();
-
-    if (nombre_ != "" && apellido_ != "" && email_ != "" && password_ != "" && rol_ != 0) {
-
-    }
-    else {
-        $('#mensaje').html("Faltan campos por llenar");
-        setTimeout("$('#mensaje').html('');",5000);
-    }
-
-}
-
 function enviarAjax() {
     var numero = $('#numero').val();
     if (numero == '' || numero <= 0) {
@@ -42,29 +25,89 @@ function enviarAjax() {
     }
 }
 
-/*function entra() {
-    console.log('Entra al Campo');
-    alert('Entra al Campo');
-}*/
+function validarCampos() {
+    const nombre = $("#nombre").val().trim();
+    const apellido = $("#apellido").val().trim();
+    const email = $("#email").val().trim();
+    const password = $("#password").val().trim();
+    const rol = $("#rol").val();
 
-/*function sale() {    
-    var email = $('#email').val();    
-    if(email !=''){
+    return nombre && apellido && email && password && rol !== "0";
+}
+
+function mostrarMensaje(id, mensaje) {
+    $(`#${id}`).text(mensaje).show();
+    setTimeout(() => {
+        $(`#${id}`).fadeOut();
+    }, 5000);
+}
+
+function validarCorreo() {
+    const email = $("#email").val().trim();
+    if (email) {
         $.ajax({
-            url: 'validacion_correo.php',
-            type: 'post',
-            dataType: 'text',
-            data: 'email='+ email, 
-            success: function(resp) {
-                console.log(resp);
-                if (resp == 1) {
-                    $('#mensaje').html('El correo ya existe');
+            url: "validacion_correo.php",
+            type: "POST",
+            data: { email: email },
+            success: function (response) {
+                if (response === "existe") {
+                    mostrarMensaje("emailMessage", `El correo ${email} ya existe.`);
+                    $("#email").data("valido", false);
+                } else {
+                    $("#email").data("valido", true);
                 }
-                setTimeout("$('#mensaje').html('');", 5000);
-            },error: function(){
-                alert('Error en la conexion...');
             }
         });
     }
-}*/
+}
 
+function eliminarEmpleado(id) {
+    if (!confirm("¿Estás seguro de que deseas eliminar este empleado?")) {
+        return;
+    }
+
+    $.ajax({
+        url: "empleados_elimina.php",
+        type: "GET",
+        data: { id: id },
+        success: function(response) {
+            const result = JSON.parse(response);
+
+            if (result.success) {
+                alert("Empleado eliminado con éxito.");
+                location.reload();
+            } else {
+                alert(result.error || "Error al eliminar el empleado.");
+            }
+        },
+        error: function() {
+            alert("Ocurrió un error en la solicitud de eliminación.");
+        }
+    });
+}
+
+function guardarEmpleado() {
+    const nombre = $("#nombre").val();
+    const apellido = $("#apellido").val();
+    const email = $("#email").val();
+    const password = $("#password").val();
+    const rol = $("#rol").val();
+
+    $.ajax({
+        url: "empleados_salva.php",
+        type: "POST",
+        data: {
+            nombre: nombre,
+            apellidos: apellido,
+            email: email,
+            password: password,
+            rol: rol
+        },
+        success: function(response) {
+            window.location.href = "empleados_lista.php";
+        },
+        error: function() {
+            $("#message").text("Ocurrió un error al registrar el empleado.");
+        }
+    });
+}
